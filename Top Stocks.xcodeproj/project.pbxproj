@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A238332BC5342B29AB378D5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4230716CE842485CB6FF8BBB /* libPods.a */; };
+		B046109716924E39007ABFF7 /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = B046109616924E39007ABFF7 /* Stock.m */; };
+		B04610BC1692A15B007ABFF7 /* apikey in Resources */ = {isa = PBXBuildFile; fileRef = B04610BB1692A15B007ABFF7 /* apikey */; };
+		B05D711C168FE69E00137186 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711B168FE69E00137186 /* UIKit.framework */; };
+		B05D711E168FE69E00137186 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711D168FE69E00137186 /* Foundation.framework */; };
+		B05D7120168FE69E00137186 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711F168FE69E00137186 /* CoreGraphics.framework */; };
+		B05D7122168FE69E00137186 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D7121168FE69E00137186 /* CoreData.framework */; };
+		B05D7128168FE69E00137186 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B05D7126168FE69E00137186 /* InfoPlist.strings */; };
+		B05D712A168FE69E00137186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D7129168FE69E00137186 /* main.m */; };
+		B05D712E168FE69E00137186 /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D712D168FE69E00137186 /* TSAppDelegate.m */; };
+		B05D7130168FE69E00137186 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B05D712F168FE69E00137186 /* Default.png */; };
+		B05D7132168FE69E00137186 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B05D7131168FE69E00137186 /* Default@2x.png */; };
+		B05D7134168FE69E00137186 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B05D7133168FE69E00137186 /* Default-568h@2x.png */; };
+		B05D7137168FE69E00137186 /* Top_Stocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */; };
+		B05D714816900AC500137186 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = B05D714716900AC500137186 /* calendar.png */; };
+		B05D71521690158B00137186 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D71511690158B00137186 /* HomeViewController.m */; };
+		B05D71551690159B00137186 /* StockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D71541690159B00137186 /* StockViewController.m */; };
+		B05D715816901CAE00137186 /* Stocktwits.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D715716901CAE00137186 /* Stocktwits.m */; };
+		B05D715B16901CEC00137186 /* YahooFinance.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D715A16901CEC00137186 /* YahooFinance.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4230716CE842485CB6FF8BBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		454EEE3EE43D470F8D8068DC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B03CDCB61690337E00E3CFDF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B03CDCB8169033A800E3CFDF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		B03CDCBA169033C700E3CFDF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B03CDCBC169033D400E3CFDF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B03CDCBE169033DE00E3CFDF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B03CDCC0169033EB00E3CFDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B046109516924E39007ABFF7 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
+		B046109616924E39007ABFF7 /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
+		B04610BB1692A15B007ABFF7 /* apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey; sourceTree = "<group>"; };
+		B05D7117168FE69E00137186 /* Top Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Stocks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B05D711B168FE69E00137186 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B05D711D168FE69E00137186 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B05D711F168FE69E00137186 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B05D7121168FE69E00137186 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B05D7125168FE69E00137186 /* Top Stocks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Top Stocks-Info.plist"; sourceTree = "<group>"; };
+		B05D7127168FE69E00137186 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B05D7129168FE69E00137186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B05D712B168FE69E00137186 /* Top Stocks-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Stocks-Prefix.pch"; sourceTree = "<group>"; };
+		B05D712C168FE69E00137186 /* TSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAppDelegate.h; sourceTree = "<group>"; };
+		B05D712D168FE69E00137186 /* TSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAppDelegate.m; sourceTree = "<group>"; };
+		B05D712F168FE69E00137186 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B05D7131168FE69E00137186 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B05D7133168FE69E00137186 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B05D7136168FE69E00137186 /* Top_Stocks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Top_Stocks.xcdatamodel; sourceTree = "<group>"; };
+		B05D714716900AC500137186 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		B05D71501690158B00137186 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B05D71511690158B00137186 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B05D71531690159B00137186 /* StockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockViewController.h; sourceTree = "<group>"; };
+		B05D71541690159B00137186 /* StockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockViewController.m; sourceTree = "<group>"; };
+		B05D715616901CAE00137186 /* Stocktwits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stocktwits.h; sourceTree = "<group>"; };
+		B05D715716901CAE00137186 /* Stocktwits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stocktwits.m; sourceTree = "<group>"; };
+		B05D715916901CEC00137186 /* YahooFinance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooFinance.h; sourceTree = "<group>"; };
+		B05D715A16901CEC00137186 /* YahooFinance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooFinance.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B05D7114168FE69E00137186 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B05D711C168FE69E00137186 /* UIKit.framework in Frameworks */,
+				B05D711E168FE69E00137186 /* Foundation.framework in Frameworks */,
+				B05D7120168FE69E00137186 /* CoreGraphics.framework in Frameworks */,
+				B05D7122168FE69E00137186 /* CoreData.framework in Frameworks */,
+				6A238332BC5342B29AB378D5 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B05D710C168FE69E00137186 = {
+			isa = PBXGroup;
+			children = (
+				B05D7123168FE69E00137186 /* Top Stocks */,
+				B05D711A168FE69E00137186 /* Frameworks */,
+				B05D7118168FE69E00137186 /* Products */,
+				454EEE3EE43D470F8D8068DC /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		B05D7118168FE69E00137186 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B05D7117168FE69E00137186 /* Top Stocks.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B05D711A168FE69E00137186 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B03CDCB8169033A800E3CFDF /* libxml2.dylib */,
+				B03CDCC0169033EB00E3CFDF /* SystemConfiguration.framework */,
+				B03CDCBC169033D400E3CFDF /* MobileCoreServices.framework */,
+				B03CDCB61690337E00E3CFDF /* CFNetwork.framework */,
+				B03CDCBE169033DE00E3CFDF /* QuartzCore.framework */,
+				B03CDCBA169033C700E3CFDF /* Security.framework */,
+				B05D711B168FE69E00137186 /* UIKit.framework */,
+				B05D711D168FE69E00137186 /* Foundation.framework */,
+				B05D711F168FE69E00137186 /* CoreGraphics.framework */,
+				B05D7121168FE69E00137186 /* CoreData.framework */,
+				4230716CE842485CB6FF8BBB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B05D7123168FE69E00137186 /* Top Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				B05D712C168FE69E00137186 /* TSAppDelegate.h */,
+				B05D712D168FE69E00137186 /* TSAppDelegate.m */,
+				B05D71501690158B00137186 /* HomeViewController.h */,
+				B05D71511690158B00137186 /* HomeViewController.m */,
+				B05D71531690159B00137186 /* StockViewController.h */,
+				B05D71541690159B00137186 /* StockViewController.m */,
+				B05D715616901CAE00137186 /* Stocktwits.h */,
+				B05D715716901CAE00137186 /* Stocktwits.m */,
+				B05D715916901CEC00137186 /* YahooFinance.h */,
+				B05D715A16901CEC00137186 /* YahooFinance.m */,
+				B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */,
+				B046109516924E39007ABFF7 /* Stock.h */,
+				B046109616924E39007ABFF7 /* Stock.m */,
+				B04610BB1692A15B007ABFF7 /* apikey */,
+				B05D7124168FE69E00137186 /* Supporting Files */,
+			);
+			path = "Top Stocks";
+			sourceTree = "<group>";
+		};
+		B05D7124168FE69E00137186 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B05D7125168FE69E00137186 /* Top Stocks-Info.plist */,
+				B05D7126168FE69E00137186 /* InfoPlist.strings */,
+				B05D7129168FE69E00137186 /* main.m */,
+				B05D712B168FE69E00137186 /* Top Stocks-Prefix.pch */,
+				B05D714716900AC500137186 /* calendar.png */,
+				B05D712F168FE69E00137186 /* Default.png */,
+				B05D7131168FE69E00137186 /* Default@2x.png */,
+				B05D7133168FE69E00137186 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B05D7116168FE69E00137186 /* Top Stocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B05D713A168FE69E00137186 /* Build configuration list for PBXNativeTarget "Top Stocks" */;
+			buildPhases = (
+				B05D7113168FE69E00137186 /* Sources */,
+				B05D7114168FE69E00137186 /* Frameworks */,
+				B05D7115168FE69E00137186 /* Resources */,
+				ED0509122AF24D79A7BFBEA4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Top Stocks";
+			productName = "Top Stocks";
+			productReference = B05D7117168FE69E00137186 /* Top Stocks.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B05D710E168FE69E00137186 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TS;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "HatTrick Labs, LLC";
+			};
+			buildConfigurationList = B05D7111168FE69E00137186 /* Build configuration list for PBXProject "Top Stocks" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B05D710C168FE69E00137186;
+			productRefGroup = B05D7118168FE69E00137186 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B05D7116168FE69E00137186 /* Top Stocks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B05D7115168FE69E00137186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B05D7128168FE69E00137186 /* InfoPlist.strings in Resources */,
+				B05D7130168FE69E00137186 /* Default.png in Resources */,
+				B05D7132168FE69E00137186 /* Default@2x.png in Resources */,
+				B05D7134168FE69E00137186 /* Default-568h@2x.png in Resources */,
+				B05D714816900AC500137186 /* calendar.png in Resources */,
+				B04610BC1692A15B007ABFF7 /* apikey in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ED0509122AF24D79A7BFBEA4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B05D7113168FE69E00137186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B05D712A168FE69E00137186 /* main.m in Sources */,
+				B05D712E168FE69E00137186 /* TSAppDelegate.m in Sources */,
+				B05D7137168FE69E00137186 /* Top_Stocks.xcdatamodeld in Sources */,
+				B05D71521690158B00137186 /* HomeViewController.m in Sources */,
+				B05D71551690159B00137186 /* StockViewController.m in Sources */,
+				B05D715816901CAE00137186 /* Stocktwits.m in Sources */,
+				B05D715B16901CEC00137186 /* YahooFinance.m in Sources */,
+				B046109716924E39007ABFF7 /* Stock.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B05D7126168FE69E00137186 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B05D7127168FE69E00137186 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B05D7138168FE69E00137186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B05D7139168FE69E00137186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B05D713B168FE69E00137186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 454EEE3EE43D470F8D8068DC /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Top Stocks/Top Stocks-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Top Stocks/Top Stocks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B05D713C168FE69E00137186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 454EEE3EE43D470F8D8068DC /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Top Stocks/Top Stocks-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Top Stocks/Top Stocks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B05D7111168FE69E00137186 /* Build configuration list for PBXProject "Top Stocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B05D7138168FE69E00137186 /* Debug */,
+				B05D7139168FE69E00137186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B05D713A168FE69E00137186 /* Build configuration list for PBXNativeTarget "Top Stocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B05D713B168FE69E00137186 /* Debug */,
+				B05D713C168FE69E00137186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B05D7136168FE69E00137186 /* Top_Stocks.xcdatamodel */,
+			);
+			currentVersion = B05D7136168FE69E00137186 /* Top_Stocks.xcdatamodel */;
+			path = Top_Stocks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B05D710E168FE69E00137186 /* Project object */;
+}
