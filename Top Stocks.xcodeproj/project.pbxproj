@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6A238332BC5342B29AB378D5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4230716CE842485CB6FF8BBB /* libPods.a */; };
 		B046109716924E39007ABFF7 /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = B046109616924E39007ABFF7 /* Stock.m */; };
-		B04610BC1692A15B007ABFF7 /* apikey in Resources */ = {isa = PBXBuildFile; fileRef = B04610BB1692A15B007ABFF7 /* apikey */; };
+		B04610DB1692AA9C007ABFF7 /* apikey in Resources */ = {isa = PBXBuildFile; fileRef = B04610DA1692AA9C007ABFF7 /* apikey */; };
 		B05D711C168FE69E00137186 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711B168FE69E00137186 /* UIKit.framework */; };
 		B05D711E168FE69E00137186 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711D168FE69E00137186 /* Foundation.framework */; };
 		B05D7120168FE69E00137186 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711F168FE69E00137186 /* CoreGraphics.framework */; };
@@ -39,7 +39,7 @@
 		B03CDCC0169033EB00E3CFDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B046109516924E39007ABFF7 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		B046109616924E39007ABFF7 /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
-		B04610BB1692A15B007ABFF7 /* apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey; sourceTree = "<group>"; };
+		B04610DA1692AA9C007ABFF7 /* apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey; sourceTree = "<group>"; };
 		B05D7117168FE69E00137186 /* Top Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Stocks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D711B168FE69E00137186 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B05D711D168FE69E00137186 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,7 +134,7 @@
 				B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */,
 				B046109516924E39007ABFF7 /* Stock.h */,
 				B046109616924E39007ABFF7 /* Stock.m */,
-				B04610BB1692A15B007ABFF7 /* apikey */,
+				B04610DA1692AA9C007ABFF7 /* apikey */,
 				B05D7124168FE69E00137186 /* Supporting Files */,
 			);
 			path = "Top Stocks";
@@ -213,7 +213,7 @@
 				B05D7132168FE69E00137186 /* Default@2x.png in Resources */,
 				B05D7134168FE69E00137186 /* Default-568h@2x.png in Resources */,
 				B05D714816900AC500137186 /* calendar.png in Resources */,
-				B04610BC1692A15B007ABFF7 /* apikey in Resources */,
+				B04610DB1692AA9C007ABFF7 /* apikey in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
