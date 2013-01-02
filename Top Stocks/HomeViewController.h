@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Stocktwits.h"
 
-@interface HomeViewController : UITableViewController
+@interface HomeViewController : UITableViewController <NSXMLParserDelegate> {
+    
+    NSURLConnection *connection;
+    NSMutableData *xmlData;
+    
+}
+
 
 
 @end

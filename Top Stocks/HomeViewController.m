@@ -28,19 +28,32 @@
     [super viewDidLoad];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
+
     
+/*
     NSString *apikey = [NSString stringWithContentsOfFile:path encoding:4 error:NULL];
     NSString *trendingStocks = [NSString stringWithFormat:@"%@%@", @"https://api.stocktwits.com/api/2/trending/symbols/equities.json?access_token=", apikey];
     NSURL *url = [NSURL URLWithString:trendingStocks];
-    
-    
+
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"%@", [[JSON valueForKeyPath:@"symbols"] valueForKeyPath:@"symbol"]);
         
     } failure:nil];
     [operation start];
+*/
+    
+    
+    xmlData = [[NSMutableData alloc] init];
 
+    NSURL *url = [NSURL URLWithString:@"http://finance.yahoo.com/rss/headline?s=yhoo"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    connection = [[NSURLConnection alloc] initWithRequest:req delegate:self startImmediately:YES];
+    
+
+    
+    
+    
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -52,11 +65,38 @@
     self.navigationItem.leftBarButtonItem = btnDone;
 }
 
+
+- (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data {
+    [xmlData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)conn {
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
+
+    [parser setDelegate:self];
+    [parser parse];
+
+    xmlData = nil;
+    connection = nil;
+}
+
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    NSLog(@"%@", string);
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
