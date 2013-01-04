@@ -20,6 +20,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"parse" ofType:@"json"];
+    NSArray *parse = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath] options:kNilOptions error:nil];
+    
+    [Parse setApplicationId:[[parse objectAtIndex:0] valueForKey:@"app_id"]
+                  clientKey:[[parse objectAtIndex:1] valueForKey:@"client_key"]];
+    
+    [PFUser enableAutomaticUser];
+    
+    PFACL *defaultACL = [PFACL ACL];
+    [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     

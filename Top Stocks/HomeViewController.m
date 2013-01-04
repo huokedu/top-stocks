@@ -26,7 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
+    PFObject *testObject = [PFObject objectWithClassName:@"Stock"];
+    [testObject setObject:@"some oject" forKey:@"company"];
+    [testObject save];
+
+    
+
+
     
 /*
     NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
@@ -45,15 +53,16 @@
 
     
     
-    
     NSURL *url = [NSURL URLWithString:@"http://finance.yahoo.com/rss/headline?s=goog"];
     RXMLElement *rootXML = [RXMLElement elementFromURL:url];
+
+    /*
     
     [rootXML iterate:@"channel.item" usingBlock: ^(RXMLElement *item) {
         NSLog(@"Title: %@", [item child:@"title"].text);
         NSLog(@"Link: %@", [item child:@"link"].text);
     }];
-    
+    */
     
     
     

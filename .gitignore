@@ -17,6 +17,7 @@
 *.lock
 profile
 apikey
+parse.json
 
 ####
 # Xcode temporary files that should never be committed
