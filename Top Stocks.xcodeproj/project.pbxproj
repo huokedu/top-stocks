@@ -42,6 +42,7 @@
 		B05D715B16901CEC00137186 /* YahooFinance.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D715A16901CEC00137186 /* YahooFinance.m */; };
 		B070BEEC1695644B00C94EE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B070BEEB1695644B00C94EE5 /* libz.dylib */; };
 		B070BEEE1695647200C94EE5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B03CDCB8169033A800E3CFDF /* libxml2.dylib */; };
+		B0C8E71E16982CE500F27B36 /* StockNews.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C8E71D16982CE500F27B36 /* StockNews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,8 @@
 		B05D715916901CEC00137186 /* YahooFinance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooFinance.h; sourceTree = "<group>"; };
 		B05D715A16901CEC00137186 /* YahooFinance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooFinance.m; sourceTree = "<group>"; };
 		B070BEEB1695644B00C94EE5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B0C8E71C16982CE500F27B36 /* StockNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockNews.h; sourceTree = "<group>"; };
+		B0C8E71D16982CE500F27B36 /* StockNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockNews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */,
 				B046109516924E39007ABFF7 /* Stock.h */,
 				B046109616924E39007ABFF7 /* Stock.m */,
+				B0C8E71C16982CE500F27B36 /* StockNews.h */,
+				B0C8E71D16982CE500F27B36 /* StockNews.m */,
 				B03ADE081696C25D00F4F6FB /* parse.json */,
 				B04610DA1692AA9C007ABFF7 /* apikey */,
 				B05D7124168FE69E00137186 /* Supporting Files */,
@@ -301,6 +306,7 @@
 				B05D715816901CAE00137186 /* Stocktwits.m in Sources */,
 				B05D715B16901CEC00137186 /* YahooFinance.m in Sources */,
 				B046109716924E39007ABFF7 /* Stock.m in Sources */,
+				B0C8E71E16982CE500F27B36 /* StockNews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

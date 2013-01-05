@@ -27,53 +27,65 @@
 {
     [super viewDidLoad];
 
-    
-    PFObject *testObject = [PFObject objectWithClassName:@"Stock"];
-    [testObject setObject:@"some oject" forKey:@"company"];
-    [testObject save];
-
-    
-
-
-    
-/*
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
-    NSString *apikey = [NSString stringWithContentsOfFile:path encoding:4 error:NULL];
-    NSString *trendingStocks = [NSString stringWithFormat:@"%@%@", @"https://api.stocktwits.com/api/2/trending/symbols/equities.json?access_token=", apikey];
-    NSURL *url = [NSURL URLWithString:trendingStocks];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"%@", [[JSON valueForKeyPath:@"symbols"] valueForKeyPath:@"symbol"]);
-        
-    } failure:nil];
-    [operation start];
-*/
-    
-
-    
-    
-    NSURL *url = [NSURL URLWithString:@"http://finance.yahoo.com/rss/headline?s=goog"];
-    RXMLElement *rootXML = [RXMLElement elementFromURL:url];
-
-    /*
-    
-    [rootXML iterate:@"channel.item" usingBlock: ^(RXMLElement *item) {
-        NSLog(@"Title: %@", [item child:@"title"].text);
-        NSLog(@"Link: %@", [item child:@"link"].text);
-    }];
-    */
-    
-    
+    [self updateTrendingStocks];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     [button setTitle:@"$$" forState:UIControlStateNormal];
     
     button.frame=CGRectMake(0,0, 29, 29);
     //        [button addTarget:self action:@selector(regimenInfo) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = btnDone;
+}
+
+- (void)updateTrendingStocks {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
+    NSString *apikey = [NSString stringWithContentsOfFile:path encoding:4 error:NULL];
+    NSString *trendingStocks = [NSString stringWithFormat:@"%@%@", @"https://api.stocktwits.com/api/2/trending/symbols/equities.json?access_token=", apikey];
+    NSURL *trendingUrl = [NSURL URLWithString:trendingStocks];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:trendingUrl];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+
+            NSArray *symbols = [JSON valueForKeyPath:@"symbols"];
+        
+            for (NSDictionary *stock in symbols) {
+  
+                NSString *symbol = [stock valueForKey:@"symbol"];
+                NSString *company = [stock valueForKey:@"title"];
+                
+                PFObject *pfStock = [PFObject objectWithClassName:@"Stock"];
+                [pfStock setObject:symbol forKey:@"ticker"];
+                [pfStock setObject:company forKey:@"company"];
+                [pfStock save];
+        
+                NSURL *newsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://finance.yahoo.com/rss/headline?s=", symbol]];
+                
+                RXMLElement *rootXML = [RXMLElement elementFromURL:newsUrl];
+                
+                [rootXML iterate:@"channel.item" usingBlock: ^(RXMLElement *item) {
+                    
+                    
+                    PFObject *pfNews = [PFObject objectWithClassName:@"StockNews"];
+                    [pfNews setObject:pfStock forKey:@"company"];
+                    [pfNews setObject:[item child:@"title"].text forKey:@"title"];
+                    [pfNews setObject:[item child:@"link"].text forKey:@"link"];
+                    [pfNews save];
+                }];
+            }
+    } failure:nil];
+    [operation start];
+    
+    
+
+
+/*
+    PFQuery *stock = [PFQuery queryWithClassName:@"Stock"];
+    [stock whereKey:@"company" containsString:@"Citigroup"];
+    PFObject *getstock = [stock getFirstObject];
+*/
+
 }
 
 - (void)didReceiveMemoryWarning
