@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Stocktwits.h"
+#import "Stock.h"
+#import "StockNews.h"
+
 
 @interface HomeViewController : UITableViewController <NSXMLParserDelegate> {
     
@@ -16,6 +18,6 @@
     
 }
 
-
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

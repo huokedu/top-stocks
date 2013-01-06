@@ -9,6 +9,7 @@
 #import "TSAppDelegate.h"
 #import "HomeViewController.h"
 #import "StockViewController.h"
+#import <CoreData/CoreData.h>
 #import "Stocktwits.h"
 #import "YahooFinance.h"
 
@@ -32,14 +33,13 @@
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
-    
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     HomeViewController *hvc = [[HomeViewController alloc] init];
     StockViewController *svc = [[StockViewController alloc] init];
+
+    hvc.managedObjectContext = [self managedObjectContext];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:hvc];
     

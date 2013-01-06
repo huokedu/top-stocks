@@ -39,59 +39,153 @@
 }
 
 - (void)updateTrendingStocks {
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
-    NSString *apikey = [NSString stringWithContentsOfFile:path encoding:4 error:NULL];
-    NSString *trendingStocks = [NSString stringWithFormat:@"%@%@", @"https://api.stocktwits.com/api/2/trending/symbols/equities.json?access_token=", apikey];
-    NSURL *trendingUrl = [NSURL URLWithString:trendingStocks];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:trendingUrl];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 
-            NSArray *symbols = [JSON valueForKeyPath:@"symbols"];
+    // check if pfquery not nill
+    
+    
+    NSError *error;
+    
+    NSFetchRequest *stockRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *stockEntity = [NSEntityDescription entityForName:@"Stock" inManagedObjectContext:_managedObjectContext];
+    [stockRequest setEntity:stockEntity];
+    NSArray *fetchedStocks = [_managedObjectContext executeFetchRequest:stockRequest error:&error];
+
+    NSFetchRequest *newsRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *newsEntity = [NSEntityDescription entityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+    [newsRequest setEntity:newsEntity];
+    NSArray *fetchedNews = [_managedObjectContext executeFetchRequest:newsRequest error:&error];
+
+    NSDate *checkStock = [[fetchedStocks objectAtIndex:0] dateCreated];
+    NSDate *checkpfStock = [[[PFQuery queryWithClassName:@"Stock"] getFirstObject] createdAt];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *nowComponents = [cal components:( NSHourCalendarUnit ) fromDate:[NSDate date]];
+    NSDateComponents *stockComponents = [cal components:( NSHourCalendarUnit ) fromDate:checkStock];
+    NSDateComponents *pfstockComponents = [cal components:( NSHourCalendarUnit ) fromDate:checkpfStock];
+    
+    if (nowComponents.hour > stockComponents.hour) {
         
-            for (NSDictionary *stock in symbols) {
-  
-                NSString *symbol = [stock valueForKey:@"symbol"];
-                NSString *company = [stock valueForKey:@"title"];
-                
-                PFObject *pfStock = [PFObject objectWithClassName:@"Stock"];
-                [pfStock setObject:symbol forKey:@"ticker"];
-                [pfStock setObject:company forKey:@"company"];
-                [pfStock save];
+        for (Stock *deleteStock in fetchedStocks) {
+            [_managedObjectContext deleteObject:deleteStock];
+            
+            NSLog(@"Deleted: %@", deleteStock.ticker);
+        }
         
-                NSURL *newsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://finance.yahoo.com/rss/headline?s=", symbol]];
+        for (StockNews *deleteNews in fetchedNews) {
+            [_managedObjectContext deleteObject:deleteNews];
+            NSLog(@"Deleted: %@", deleteNews.title);
+        }
+        
+        if (nowComponents.hour > pfstockComponents.hour) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"apikey" ofType:NULL];
+            NSString *apikey = [NSString stringWithContentsOfFile:path encoding:4 error:NULL];
+            NSString *trendingStocks = [NSString stringWithFormat:@"%@%@", @"https://api.stocktwits.com/api/2/trending/symbols/equities.json?access_token=", apikey];
+            NSURL *trendingUrl = [NSURL URLWithString:trendingStocks];
+            
+            NSURLRequest *request = [NSURLRequest requestWithURL:trendingUrl];
+            AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            
+                NSArray *symbols = [JSON valueForKeyPath:@"symbols"];
                 
-                RXMLElement *rootXML = [RXMLElement elementFromURL:newsUrl];
+                for (NSDictionary *stock in symbols) {
+                    NSString *symbol = [stock valueForKey:@"symbol"];
+                    NSString *company = [stock valueForKey:@"title"];
+
+                    Stock *trendingStock = [NSEntityDescription insertNewObjectForEntityForName:@"Stock" inManagedObjectContext:_managedObjectContext];
+                    NSError *error;
+                    
+                    trendingStock.ticker = symbol;
+                    trendingStock.company = company;
+                    trendingStock.dateCreated = [NSDate date];
+                    [trendingStock.managedObjectContext save:&error];
                 
-                [rootXML iterate:@"channel.item" usingBlock: ^(RXMLElement *item) {
+                    PFObject *pfStock = [PFObject objectWithClassName:@"Stock"];
+                    [pfStock setObject:symbol forKey:@"ticker"];
+                    [pfStock setObject:company forKey:@"company"];
+                    [pfStock save];
+                
+                    NSLog(@"%@", symbol);
+                
+                    NSURL *newsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://finance.yahoo.com/rss/headline?s=", symbol]];
+                
+                    RXMLElement *rootXML = [RXMLElement elementFromURL:newsUrl];
+                
+                    [rootXML iterate:@"channel.item" usingBlock: ^(RXMLElement *item) {
+                        StockNews *trendingNews = [NSEntityDescription insertNewObjectForEntityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+                        NSError *error;
                     
+                        trendingNews.title = [item child:@"title"].text;
+                        trendingNews.link = [item child:@"link"].text;
+                        [trendingNews.managedObjectContext save:&error];
                     
-                    PFObject *pfNews = [PFObject objectWithClassName:@"StockNews"];
-                    [pfNews setObject:pfStock forKey:@"company"];
-                    [pfNews setObject:[item child:@"title"].text forKey:@"title"];
-                    [pfNews setObject:[item child:@"link"].text forKey:@"link"];
-                    [pfNews save];
-                }];
+                        PFObject *pfNews = [PFObject objectWithClassName:@"StockNews"];
+                        [pfNews setObject:pfStock forKey:@"company"];
+                        [pfNews setObject:[item child:@"title"].text forKey:@"title"];
+                        [pfNews setObject:[item child:@"link"].text forKey:@"link"];
+                        [pfNews save];
+                    
+                        NSLog(@"%@", trendingNews.title);
+                    }];
+                }
+
+                NSError *error;
+                [_managedObjectContext save:&error];
+                NSLog(@"Updated parse");
+                
+            } failure:nil];
+            [operation start];
+        }
+        else {
+            PFQuery *getStocks = [PFQuery queryWithClassName:@"Stock"];
+            NSArray *pfStocks = [getStocks findObjects];
+        
+            for (PFObject *pfStock in pfStocks) {
+                Stock *addStock = [NSEntityDescription insertNewObjectForEntityForName:@"Stock" inManagedObjectContext:_managedObjectContext];
+                NSString *symbol = [pfStock objectForKey:@"ticker"];
+                NSString *company = [pfStock objectForKey:@"company"];
+                
+                addStock.ticker = symbol;
+                addStock.company = company;
+                addStock.dateCreated = [pfStock createdAt];
+                [addStock.managedObjectContext save:&error];
+                
+                NSLog(@"%@", symbol);
             }
-    } failure:nil];
-    [operation start];
-    
-    
+            
+            PFQuery *getStockNews = [PFQuery queryWithClassName:@"StockNews"];
+            NSArray *pfStockNews = [getStockNews findObjects];
+            
+            for (PFObject *pfNews in pfStockNews) {
+                StockNews *addNews = [NSEntityDescription insertNewObjectForEntityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+                NSString *title = [pfNews objectForKey:@"ticker"];
+                NSString *link = [pfNews objectForKey:@"company"];
+                
+                addNews.title = title;
+                addNews.link = link;
+                [addNews.managedObjectContext save:&error];
+                
+                NSLog(@"%@", link);
+            }
+            
+            NSFetchRequest *checkstockRequest = [[NSFetchRequest alloc] init];
+            [checkstockRequest setEntity:stockEntity];
+            NSArray *checkStocks = [_managedObjectContext executeFetchRequest:checkstockRequest error:&error];
 
+            NSFetchRequest *checknewsRequest = [[NSFetchRequest alloc] init];
+            [checknewsRequest setEntity:newsEntity];
+            NSArray *checkNews = [_managedObjectContext executeFetchRequest:checknewsRequest error:&error];
 
-/*
-    PFQuery *stock = [PFQuery queryWithClassName:@"Stock"];
-    [stock whereKey:@"company" containsString:@"Citigroup"];
-    PFObject *getstock = [stock getFirstObject];
-*/
-
+            if (([checkStocks count] == [pfStocks count]) && ([checkNews count] == [pfStockNews count])) {
+                [_managedObjectContext save:&error];
+                NSLog(@"Updated model");
+            }
+        }
+    }
 }
-
+    
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
