@@ -12,10 +12,8 @@
 
 
 @interface HomeViewController : UITableViewController <NSXMLParserDelegate> {
-    
     NSURLConnection *connection;
     NSMutableData *xmlData;
-    
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

@@ -23,7 +23,6 @@
 		B03ADDE91696BA0E00F4F6FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03CDCC0169033EB00E3CFDF /* SystemConfiguration.framework */; };
 		B03ADE091696C25D00F4F6FB /* parse.json in Resources */ = {isa = PBXBuildFile; fileRef = B03ADE081696C25D00F4F6FB /* parse.json */; };
 		B046109716924E39007ABFF7 /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = B046109616924E39007ABFF7 /* Stock.m */; };
-		B04610DB1692AA9C007ABFF7 /* apikey in Resources */ = {isa = PBXBuildFile; fileRef = B04610DA1692AA9C007ABFF7 /* apikey */; };
 		B05D711C168FE69E00137186 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711B168FE69E00137186 /* UIKit.framework */; };
 		B05D711E168FE69E00137186 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711D168FE69E00137186 /* Foundation.framework */; };
 		B05D7120168FE69E00137186 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05D711F168FE69E00137186 /* CoreGraphics.framework */; };
@@ -41,7 +40,6 @@
 		B05D715816901CAE00137186 /* Stocktwits.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D715716901CAE00137186 /* Stocktwits.m */; };
 		B05D715B16901CEC00137186 /* YahooFinance.m in Sources */ = {isa = PBXBuildFile; fileRef = B05D715A16901CEC00137186 /* YahooFinance.m */; };
 		B070BEEC1695644B00C94EE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B070BEEB1695644B00C94EE5 /* libz.dylib */; };
-		B070BEEE1695647200C94EE5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B03CDCB8169033A800E3CFDF /* libxml2.dylib */; };
 		B0C8E71E16982CE500F27B36 /* StockNews.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C8E71D16982CE500F27B36 /* StockNews.m */; };
 /* End PBXBuildFile section */
 
@@ -58,14 +56,12 @@
 		B03ADDE71696BA0400F4F6FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B03ADE081696C25D00F4F6FB /* parse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = parse.json; sourceTree = "<group>"; };
 		B03CDCB61690337E00E3CFDF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		B03CDCB8169033A800E3CFDF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		B03CDCBA169033C700E3CFDF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B03CDCBC169033D400E3CFDF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B03CDCBE169033DE00E3CFDF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B03CDCC0169033EB00E3CFDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B046109516924E39007ABFF7 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		B046109616924E39007ABFF7 /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
-		B04610DA1692AA9C007ABFF7 /* apikey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey; sourceTree = "<group>"; };
 		B05D7117168FE69E00137186 /* Top Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Stocks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D711B168FE69E00137186 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B05D711D168FE69E00137186 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,7 +97,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B03ADDE11696B9A300F4F6FB /* libsqlite3.dylib in Frameworks */,
-				B070BEEE1695647200C94EE5 /* libxml2.dylib in Frameworks */,
 				B070BEEC1695644B00C94EE5 /* libz.dylib in Frameworks */,
 				6A238332BC5342B29AB378D5 /* libPods.a in Frameworks */,
 				B03ADDE91696BA0E00F4F6FB /* SystemConfiguration.framework in Frameworks */,
@@ -149,7 +144,6 @@
 			children = (
 				B03ADDE01696B9A300F4F6FB /* libsqlite3.dylib */,
 				B070BEEB1695644B00C94EE5 /* libz.dylib */,
-				B03CDCB8169033A800E3CFDF /* libxml2.dylib */,
 				4230716CE842485CB6FF8BBB /* libPods.a */,
 				B03ADDE71696BA0400F4F6FB /* StoreKit.framework */,
 				B03ADDE51696B9DB00F4F6FB /* Social.framework */,
@@ -190,7 +184,6 @@
 				B0C8E71C16982CE500F27B36 /* StockNews.h */,
 				B0C8E71D16982CE500F27B36 /* StockNews.m */,
 				B03ADE081696C25D00F4F6FB /* parse.json */,
-				B04610DA1692AA9C007ABFF7 /* apikey */,
 				B05D7124168FE69E00137186 /* Supporting Files */,
 			);
 			path = "Top Stocks";
@@ -269,7 +262,6 @@
 				B05D7132168FE69E00137186 /* Default@2x.png in Resources */,
 				B05D7134168FE69E00137186 /* Default-568h@2x.png in Resources */,
 				B05D714816900AC500137186 /* calendar.png in Resources */,
-				B04610DB1692AA9C007ABFF7 /* apikey in Resources */,
 				B03ADE091696C25D00F4F6FB /* parse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

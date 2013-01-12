@@ -8,8 +8,6 @@
 
 #import "Stocktwits.h"
 
-#define kCLIENTID "Your Foursquare Client ID"
-
 @implementation Stocktwits
 
 
