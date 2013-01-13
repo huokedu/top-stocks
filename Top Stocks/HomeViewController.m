@@ -27,8 +27,6 @@
 {
     [super viewDidLoad];
 
-    [self updateTrendingStocks];
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"$$" forState:UIControlStateNormal];
     
@@ -68,7 +66,6 @@
     if ([pfstockDate compare:stockDate] == 1) {
         for (Stock *deleteStock in fetchedStocks) {
             [_managedObjectContext deleteObject:deleteStock];
-            
             NSLog(@"Deleted: %@", deleteStock.ticker);
         }
         
@@ -92,29 +89,23 @@
             
             NSLog(@"%@", symbol);
             
-        
-        }
-        
-        PFQuery *getStockNews = [PFQuery queryWithClassName:@"StockNews"];
-        NSArray *pfStockNews = [getStockNews findObjects];
-
-
-        
-/*
-        for (PFObject *pfNews in pfStockNews) {
-            StockNews *addNews = [NSEntityDescription insertNewObjectForEntityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
-            NSString *title = [pfNews objectForKey:@"ticker"];
-            NSString *link = [pfNews objectForKey:@"company"];
+            PFQuery *getNews = [PFQuery queryWithClassName:@"StockNews"];
+            [getNews whereKey:@"company" equalTo:pfStock];
+            NSArray *getpfNews = [getNews findObjects];
             
-            addNews.title = title;
-            addNews.link = link;
-            [addNews.managedObjectContext save:&error];
-            
-            NSLog(@"%@", link);
+            for (PFObject *pfNews in getpfNews) {
+                StockNews *addNews = [NSEntityDescription insertNewObjectForEntityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+                NSString *title = [pfNews objectForKey:@"title"];
+                NSString *link = [pfNews objectForKey:@"link"];
+                
+                addNews.title = title;
+                addNews.link = link;
+                [addNews.managedObjectContext save:&error];
+                
+                NSLog(@"%@", link);
+            }
         }
-*/
-        
-        
+    
         NSFetchRequest *checkstockRequest = [[NSFetchRequest alloc] init];
         [checkstockRequest setEntity:stockEntity];
         NSArray *checkStocks = [_managedObjectContext executeFetchRequest:checkstockRequest error:&error];
@@ -122,6 +113,9 @@
         NSFetchRequest *checknewsRequest = [[NSFetchRequest alloc] init];
         [checknewsRequest setEntity:newsEntity];
         NSArray *checkNews = [_managedObjectContext executeFetchRequest:checknewsRequest error:&error];
+        
+        PFQuery *getNews = [PFQuery queryWithClassName:@"StockNews"];
+        NSArray *pfStockNews = [getNews findObjects];
         
         if (([checkStocks count] == [pfStocks count]) && ([checkNews count] == [pfStockNews count])) {
             [_managedObjectContext save:&error];

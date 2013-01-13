@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (void)updateTrendingStocks;
+
 @end

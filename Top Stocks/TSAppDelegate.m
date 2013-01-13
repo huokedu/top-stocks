@@ -69,7 +69,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if ([[PFQuery queryWithClassName:@"Stock"] findObjects]) {
+        HomeViewController *hvc = [[HomeViewController alloc] init];
+        hvc.managedObjectContext = [self managedObjectContext];
+        [hvc updateTrendingStocks];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
