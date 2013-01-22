@@ -8,7 +8,6 @@
 
 #import "StockNews.h"
 
-
 @implementation StockNews
 
 @dynamic title;

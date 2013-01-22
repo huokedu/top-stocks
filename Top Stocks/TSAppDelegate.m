@@ -9,9 +9,10 @@
 #import "TSAppDelegate.h"
 #import "HomeViewController.h"
 #import "StockViewController.h"
+#import "WebViewController.h"
 #import <CoreData/CoreData.h>
-#import "Stocktwits.h"
-#import "YahooFinance.h"
+#import "Stock.h"
+#import "StockNews.h"
 
 @implementation TSAppDelegate
 
@@ -38,9 +39,13 @@
     
     HomeViewController *hvc = [[HomeViewController alloc] init];
     StockViewController *svc = [[StockViewController alloc] init];
-
-    hvc.managedObjectContext = [self managedObjectContext];
     
+    hvc.managedObjectContext = [self managedObjectContext];
+    svc.managedObjectContext = [self managedObjectContext];
+    
+    WebViewController *wvc = [[WebViewController alloc] init];
+    [svc setWebViewController:wvc];
+
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:hvc];
     
     [[self window] setRootViewController:navController];
@@ -70,9 +75,92 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     if ([[PFQuery queryWithClassName:@"Stock"] findObjects]) {
-        HomeViewController *hvc = [[HomeViewController alloc] init];
-        hvc.managedObjectContext = [self managedObjectContext];
-        [hvc updateTrendingStocks];
+        NSError *error;
+        
+        NSFetchRequest *stockRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *stockEntity = [NSEntityDescription entityForName:@"Stock" inManagedObjectContext:_managedObjectContext];
+        [stockRequest setEntity:stockEntity];
+        NSArray *fetchedStocks = [_managedObjectContext executeFetchRequest:stockRequest error:&error];
+        
+        NSFetchRequest *newsRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *newsEntity = [NSEntityDescription entityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+        [newsRequest setEntity:newsEntity];
+        NSArray *fetchedNews = [_managedObjectContext executeFetchRequest:newsRequest error:&error];
+        
+        NSDate *pfstockDate = [[[PFQuery queryWithClassName:@"Stock"] getFirstObject] createdAt];
+        NSDate *stockDate;
+        
+        if ([fetchedStocks count] > 0) {
+            stockDate = [[fetchedStocks objectAtIndex:0] dateCreated];
+        }
+        else {
+            NSDate *today = [[NSDate alloc] init];
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+            [offsetComponents setMonth:-1];
+            stockDate = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
+        }
+        
+        if ([pfstockDate compare:stockDate] == 1) {
+            for (Stock *deleteStock in fetchedStocks) {
+                [_managedObjectContext deleteObject:deleteStock];
+                NSLog(@"Deleted: %@", deleteStock.ticker);
+            }
+            
+            for (StockNews *deleteNews in fetchedNews) {
+                [_managedObjectContext deleteObject:deleteNews];
+                NSLog(@"Deleted: %@", deleteNews.title);
+            }
+            
+            PFQuery *getStocks = [PFQuery queryWithClassName:@"Stock"];
+            NSArray *pfStocks = [getStocks findObjects];
+            
+            for (PFObject *pfStock in pfStocks) {
+                Stock *addStock = [NSEntityDescription insertNewObjectForEntityForName:@"Stock" inManagedObjectContext:_managedObjectContext];
+                NSString *symbol = [pfStock objectForKey:@"ticker"];
+                NSString *company = [pfStock objectForKey:@"company"];
+                
+                addStock.ticker = symbol;
+                addStock.company = company;
+                addStock.dateCreated = [pfStock createdAt];
+                [addStock.managedObjectContext save:&error];
+                
+                NSLog(@"%@", symbol);
+                
+                PFQuery *getNews = [PFQuery queryWithClassName:@"StockNews"];
+                [getNews whereKey:@"company" equalTo:pfStock];
+                NSArray *getpfNews = [getNews findObjects];
+                
+                for (PFObject *pfNews in getpfNews) {
+                    StockNews *addNews = [NSEntityDescription insertNewObjectForEntityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
+                    NSString *title = [pfNews objectForKey:@"title"];
+                    NSString *link = [pfNews objectForKey:@"link"];
+                    
+                    addNews.title = title;
+                    addNews.link = link;
+                    [addNews.managedObjectContext save:&error];
+                    
+                    NSLog(@"%@", link);
+                }
+            }
+            
+            NSFetchRequest *checkstockRequest = [[NSFetchRequest alloc] init];
+            [checkstockRequest setEntity:stockEntity];
+            NSArray *checkStocks = [_managedObjectContext executeFetchRequest:checkstockRequest error:&error];
+            
+            NSFetchRequest *checknewsRequest = [[NSFetchRequest alloc] init];
+            [checknewsRequest setEntity:newsEntity];
+            NSArray *checkNews = [_managedObjectContext executeFetchRequest:checknewsRequest error:&error];
+            
+            PFQuery *getNews = [PFQuery queryWithClassName:@"StockNews"];
+            NSArray *pfStockNews = [getNews findObjects];
+            
+            if (([checkStocks count] == [pfStocks count]) && ([checkNews count] == [pfStockNews count])) {
+                [_managedObjectContext save:&error];
+                NSLog(@"Updated model");
+            }
+        }
+        
     }
 }
 

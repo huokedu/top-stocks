@@ -7,17 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Stock.h"
-#import "StockNews.h"
 
-
-@interface HomeViewController : UITableViewController <NSXMLParserDelegate> {
-    NSURLConnection *connection;
-    NSMutableData *xmlData;
-}
+@interface HomeViewController : UITableViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-- (void)updateTrendingStocks;
 
 @end
