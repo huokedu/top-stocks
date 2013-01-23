@@ -40,6 +40,7 @@
 		B070BEEC1695644B00C94EE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B070BEEB1695644B00C94EE5 /* libz.dylib */; };
 		B0C8E71E16982CE500F27B36 /* StockNews.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C8E71D16982CE500F27B36 /* StockNews.m */; };
 		B0C9357C16AE3A3800521DE3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C9357B16AE3A3800521DE3 /* WebViewController.m */; };
+		B0CCAEE116AF601700598F38 /* TSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CCAEE016AF601700598F38 /* TSCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		B0C8E71D16982CE500F27B36 /* StockNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockNews.m; sourceTree = "<group>"; };
 		B0C9357A16AE3A3800521DE3 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B0C9357B16AE3A3800521DE3 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B0CCAEDF16AF601700598F38 /* TSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCell.h; sourceTree = "<group>"; };
+		B0CCAEE016AF601700598F38 /* TSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				B05D71511690158B00137186 /* HomeViewController.m */,
 				B05D71531690159B00137186 /* StockViewController.h */,
 				B05D71541690159B00137186 /* StockViewController.m */,
+				B0CCAEDF16AF601700598F38 /* TSCell.h */,
+				B0CCAEE016AF601700598F38 /* TSCell.m */,
 				B0C9357A16AE3A3800521DE3 /* WebViewController.h */,
 				B0C9357B16AE3A3800521DE3 /* WebViewController.m */,
 				B05D7135168FE69E00137186 /* Top_Stocks.xcdatamodeld */,
@@ -293,6 +298,7 @@
 				B046109716924E39007ABFF7 /* Stock.m in Sources */,
 				B0C8E71E16982CE500F27B36 /* StockNews.m in Sources */,
 				B0C9357C16AE3A3800521DE3 /* WebViewController.m in Sources */,
+				B0CCAEE116AF601700598F38 /* TSCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

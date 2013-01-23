@@ -7,10 +7,11 @@
     </entity>
     <entity name="StockNews" representedClassName="StockNews" syncable="YES">
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Stock" positionX="-63" positionY="-27" width="128" height="45"/>
-        <element name="StockNews" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="StockNews" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

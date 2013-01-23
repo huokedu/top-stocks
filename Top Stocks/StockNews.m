@@ -12,5 +12,6 @@
 
 @dynamic title;
 @dynamic link;
+@dynamic ticker;
 
 @end

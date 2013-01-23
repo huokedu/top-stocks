@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "WebViewController.h"
+#import "Stock.h"
 
+@class Stock;
 @class WebViewController;
 
 @interface StockViewController : UITableViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Stock *topStock;
 @property (strong, nonatomic) WebViewController *webViewController;
 
 @end

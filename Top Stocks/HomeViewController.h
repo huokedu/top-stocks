@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (void)updateTopStocks;
+
 @end

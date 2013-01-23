@@ -7,42 +7,34 @@
 //
 
 #import "StockViewController.h"
+#import "HomeViewController.h"
 #import "StockNews.h"
+#import "TSCell.h"
 
 @implementation StockViewController {
     NSArray *stockNews;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        NSDate *today = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d"];
-        NSString *dateToday = [formatter stringFromDate:today];
-        self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", @"Top Stocks -", dateToday];
-    }
-    return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(homeView)];
+    self.navigationItem.leftBarButtonItem = btnBack;
+    
+    NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"StockNews" inManagedObjectContext:_managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSError *error;
+    NSPredicate *stockPredicate = [NSPredicate predicateWithFormat:@"ticker == %@", [_topStock ticker]];
+    [fetchRequest setPredicate:stockPredicate];
     stockNews = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"$$" forState:UIControlStateNormal];
-    
-    button.frame=CGRectMake(0,0, 29, 29);
-    //        [button addTarget:self action:@selector(regimenInfo) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = btnDone;
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", [_topStock ticker], @"News"];
+}
+
+- (void)homeView {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,14 +55,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TSCell *cell = (TSCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[TSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
     StockNews *news = [stockNews objectAtIndex:indexPath.row];
-    cell.textLabel.text = news.title;
+    cell.label.text = news.title;
     return cell;
 }
 
